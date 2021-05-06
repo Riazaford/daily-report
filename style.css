@@ -1,33 +1,49 @@
+/* GLOBALE PAGINA */
 *{
     margin: 0px;
     padding: 0px ;
     box-sizing: border-box;
 
     font-family:sans-serif;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 :root {
     --blue: #000A65;
     --blue_off: #31376B;
 }
+body{
+    height: 100vh;
+    overflow: hidden;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(111, 123, 128);
+}
 h4{
     font-style: normal;
     font-weight: 300;
     font-size: 20px;
     line-height: 100%;
 }
+input{
+    -webkit-appearance: none;
+}
 
+/*Zona lavoro */
 #app{
     width: 1406px;
     height: 645px;
+
+    overflow: hidden;
+
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+
+    border-radius: 5px;
+    box-shadow: -4px 4px 15px 10px rgba(0, 0, 0, 0.25);
+
 }
 #sidebar{
     position: static;
@@ -42,33 +58,35 @@ h4{
     border-radius: 5px 0px 0px 5px;
 
     display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
 }
 #main{
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    padding: 28px 38px;
+    align-items: center;
+    justify-content: space-evenly;
 
     position: static;
     width: 1321px;
     height: 645px;
-    left: 85px;
-    top: 0px;
 
     background: #EDEDED;
     box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 0px 5px 5px 0px;
 }
-#comm{
+/* MAIN - Area scelta */
+#comm{ /*Area di scelta commessa e/o attivita generica */
     position: static;
     width: 313px;
-    height: 578px;
+    height: 580px;
     left: 38px;
     top: 28px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: 50px 2fr 1fr;
+    
 
     background: #F4F4F4;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25), 0px 0px 5px rgba(0, 0, 0, 0.25);
@@ -83,8 +101,6 @@ h4{
     width: 100%;
     height: 50px;
 
-    flex: none;
-
     position: relative;
     top: 0px;
 
@@ -93,11 +109,235 @@ h4{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+
     text-align: center;
     letter-spacing: 0.05em;
 
     color: #FFFFFF;
 }
-.next{
+.next{ /*Freccia direzione avanti */
+    transform-origin: center;
     transform: rotate(180deg);
+}
+#comm_list{ /*Lista selezione commesse e/o attivita generiche */
+    justify-self: center;
+    align-self: center;
+
+    width: 265px;
+    height: 320px;
+    
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.comm_element{ /*Classe per ogni elemento */
+
+    width: 240px;
+    height: 40px;
+
+    background: var(--blue);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+    animation: idle 500ms linear reverse;
+}
+@keyframes idle {
+    from{
+        position: absolute;
+        transform: rotate(0deg);
+    }
+    to{
+        position: absolute;
+        transform: rotate(50deg);
+    }
+}
+#comm_new{
+    align-self: center;
+    justify-self: center;
+
+    width: 265px;
+    height: 130px;
+
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.comm_new_text{
+    width: 245px;
+    height: 50px;   
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: var(--blue);
+
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+#comm_new_add{/*Pulsante creazione nuova voce commessa*/
+    width: 245px;
+    height: 50px;
+
+    background: var(--blue);
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    
+
+    border: 0;
+    border-radius: 0.25rem;
+
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    
+    cursor: pointer;
+
+    --click_offset : 2px;
+    --margin-top: 10px;
+
+    margin-top: var(--margin-top);
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+
+    transition: 300ms ease-out;
+}
+#comm_new_add:enabled{
+    box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.5);
+}
+#comm_new_add:disabled{
+    background: var(--blue_off);
+    margin-top: var(--margin-top);
+    cursor: not-allowed;
+}
+#comm_new_add:active{
+    animation: clikked 100ms ease-in-out forwards ;
+}
+@keyframes clikked {
+    0%{
+        box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.5);
+        margin-top: var(--margin-top);
+        transform: perspective(0px),
+    };
+    50%{
+        transform: perspective(20px);
+    }
+    100%{
+        box-shadow: -2px 0px 9px rgba(0, 0, 0, 0.4);
+        margin-top: calc(var(--margin-top) - var(--click_offset));
+        transform: perspective(20px);
+    }
+}
+
+/* DAY */
+#day{
+    width: 900px;
+    height: 580px;
+
+    background: #F4F4F4;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25), 
+        0px 0px 5px rgba(0, 0, 0, 0.25);
+
+    display: grid;
+    grid-template-rows: 50px;
+}
+#title_actual_date{
+    background: var(--blue);
+
+    border-radius: 5px 5px 0px 0px;
+
+    width: 100%;
+    height: 50px;
+
+    position: relative;
+    top: 0px;
+
+    /* identical to box height, or 36px */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    text-align: center;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+#arrow_date_prev{
+    margin-left: 20px;
+}
+#actual_date{
+    margin: 0px 20px 0px 20px;
+}
+.day_grid{
+    justify-self: center;
+    align-self: center;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.25);
+}
+.timeline{
+    --timeline_width : 837px;
+    width: var(--timeline_width);
+    height: 60px;
+
+    background: #F0F0F0;
+    border-radius: 10px 10px 0px 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    letter-spacing: 3px;
+}
+.timeline_hour{
+
+    width: calc(var(--timeline_width) / 8);
+    height: 100%;
+
+    color: #C5C5C5; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.timeline_grid{
+
+    height: 156px;
+
+    background-color: white;
+    border-top: 1px solid #D1D1D1;
+    border-radius: 0px 0px 10px 10px;
+
+}
+
+/* COMUNI */
+.arrow_icon{
+    height: 18px;
+    width: 18px;
 }
