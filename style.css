@@ -19,7 +19,10 @@ body{
     justify-content: center;
 
     background-color: rgb(111, 123, 128);
+
+    pointer-events: none;
 }
+
 h4{
     font-style: normal;
     font-weight: 300;
@@ -43,6 +46,14 @@ input{
 
     border-radius: 5px;
     box-shadow: -4px 4px 15px 10px rgba(0, 0, 0, 0.25);
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
 
 }
 #sidebar{
@@ -150,19 +161,41 @@ input{
     align-items: center;
     justify-content: center;
 
+    transform: rotate(0deg);
+
     color: #FFFFFF;
 
-    animation: idle 500ms linear reverse;
+    animation: idle 600ms 1s ease-in-out forwards;
 }
 @keyframes idle {
-    from{
+    0%{
         position: absolute;
         transform: rotate(0deg);
     }
-    to{
-        position: absolute;
-        transform: rotate(50deg);
+    10%{
+        transform: rotate(-1deg);
     }
+    40%{
+        transform: rotate(8deg);
+    }
+    70%{
+        transform: rotate(-8deg);
+    }
+    99%{
+        transform: rotate(0deg);
+    }
+    100%{
+        position:initial;
+    }
+
+}
+.comm_element:active{
+    position: absolute;
+
+    box-shadow: -3px 3px 10px 5px rgba(0, 0, 0, 0.25);
+    
+    transform: translate(-0px ,-3px);
+
 }
 #comm_new{
     align-self: center;
@@ -338,6 +371,43 @@ input{
 
 /* COMUNI */
 .arrow_icon{
-    height: 18px;
-    width: 18px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+.arrow_icon:hover{
+    background-color: #ffffff2c;
+}
+.arrow_icon:active{
+    background-color: #ffffff2c;
+}
+.arrow_icon:active > img{
+    transform: translate(-2px);
+}
+/**/
+.draggable{
+    -webkit-touch-callout: all; /* iOS Safari */
+    -webkit-user-select: all; /* Safari */
+    -khtml-user-select: all; /* Konqueror HTML */
+    -moz-user-select: all; /* Old versions of Firefox */
+    -ms-user-select: all; /* Internet Explorer/Edge */
+    user-select: all; /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
+    pointer-events: all;
+    
+}
+.not_draggable{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
+}
+.clickable{
+    pointer-events: all;
 }
